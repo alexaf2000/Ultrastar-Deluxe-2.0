@@ -1,0 +1,64 @@
+<template>
+  <div>
+    <link
+      href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"
+      rel="stylesheet"
+    />
+    <h1 @click="teste">ultrastar™</h1>
+  </div>
+</template>
+<script>
+export default {
+  mounted() {
+    var vm = this;
+    const songsFolder = "./songs";
+    const fs = require("fs");
+    var path = require("path");
+    fs.readdir(songsFolder, (err, songs) => {
+      //Leer el directorio songsFolder
+      songs.forEach(song => {
+        //Por cada canción (carpeta)
+        console.log(song); //Imprime el titulo de la carpeta
+        fs.readdir(songsFolder + "/" + song, (err, files) => {
+          //Lee los archivos dentro de esa canción
+          files.forEach(file => {
+            //Por cada archivo dentro de la carpeta de la canción
+            if (path.extname(file) == ".txt") {
+              //Si la extensión del archivo es .txt
+              console.log("Se ha encontrado fichero .txt"); //Se ha encontrado un dato de canción
+              alert("Se ha encontrado un fitchero txt en la canción " + song);
+              //Añadir a base de datos de mongoDB o SQL lite
+
+              // fs.readFile(
+              //   "./songs/" + file + "/" + file + ".txt",
+              //   "utf-8",
+              //   (err, data) => {
+              //     if (err) {
+              //       alert("An error ocurred reading the file :" + err.message);
+              //       return;
+              //     }
+
+              //     // Change how to handle the file content
+              //     console.log("The file content is : " + data);
+              //   }
+              // );
+            }
+          });
+        });
+      });
+    });
+    setTimeout(function() {
+      vm.$router.replace({ path: "/dashboard/" });
+    }, 5000);
+  }
+};
+</script>
+<style>
+h1 {
+  font-family: Open Sans;
+}
+</style>
