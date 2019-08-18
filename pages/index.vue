@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"
       rel="stylesheet"
     />
-    <h1 @click="teste">ultrastar™</h1>
+    <h1 class="center-middle">ultrastar<span>™</span></h1>
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
             if (path.extname(file) == ".txt") {
               //Si la extensión del archivo es .txt
               console.log("Se ha encontrado fichero .txt"); //Se ha encontrado un dato de canción
-              alert("Se ha encontrado un fitchero txt en la canción " + song);
+              //alert("Se ha encontrado un fitchero txt en la canción " + song);
               //Añadir a base de datos de mongoDB o SQL lite
 
               // fs.readFile(
@@ -53,12 +53,19 @@ export default {
     });
     setTimeout(function() {
       vm.$router.replace({ path: "/dashboard/" });
-    }, 5000);
+    }, 15000);
   }
 };
 </script>
-<style>
-h1 {
-  font-family: Open Sans;
+<style scoped>
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
 }
 </style>
