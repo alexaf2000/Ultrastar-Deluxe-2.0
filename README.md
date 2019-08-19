@@ -1,6 +1,13 @@
-# ultrastar
+# Ultrastar
 
-> Nuxt + Electron
+Based on the last SingStar version:
+![alt text](https://i.imgur.com/KqgCncQ.jpg)
+
+Our actual result:
+![alt text](https://i.imgur.com/ppm54mn.jpg)
+
+
+> Using Nuxt + Electron
 
 ## Build Setup
 
@@ -14,4 +21,3 @@ $ npm run dev
 # build for production
 $ npm run build
 
-For detailed explanation on how things work, checkout [Nuxt.js](https://github.com/nuxt/nuxt.js), [Electron.js](https://electronjs.org/), and [electron-builder](https://www.electron.build/).
