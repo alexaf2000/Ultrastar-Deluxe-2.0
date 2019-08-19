@@ -53,6 +53,9 @@ const newWin = () => {
 		pollServer()
 	} else { return win.loadURL(_NUXT_URL_) }
 }
+require("http").createServer(function (req, res) {
+	res.end("Ultrastar web client for lists");
+}).listen(9000)
 app.on('ready', newWin)
 app.on('window-all-closed', () => app.quit())
 app.on('activate', () => win === null && newWin())
