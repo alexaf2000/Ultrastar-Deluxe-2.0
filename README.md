@@ -1,4 +1,4 @@
-# Ultrastar
+# Ultrastar 2.0
 
 Based on the last SingStar version:
 ![alt text](https://i.imgur.com/KqgCncQ.jpg)
