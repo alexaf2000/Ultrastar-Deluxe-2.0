@@ -15,3 +15,4 @@ dist
 
 # Songs Folder
 !songs/readme.md
+songs/*
