@@ -14,4 +14,4 @@ dist
 .DS_Store
 
 # Songs Folder
-songs/*
+!songs/readme.md
