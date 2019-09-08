@@ -8,16 +8,21 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"
       rel="stylesheet"
     />
-    <h1 class="center-middle">ultrastar<span>™</span></h1>
+    <h1 class="center-middle">
+      ultrastar
+      <span>™</span>
+    </h1>
   </div>
 </template>
 <script>
 export default {
   mounted() {
     var vm = this;
-    const songsFolder = "./songs";
     const fs = require("fs");
     var path = require("path");
+    const ini = require('ini');
+    const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
+    const songsFolder = config.songs_path;
     fs.readdir(songsFolder, (err, songs) => {
       //Leer el directorio songsFolder
       songs.forEach(song => {
@@ -30,6 +35,20 @@ export default {
             if (path.extname(file) == ".txt") {
               //Si la extensión del archivo es .txt
               console.log("Se ha encontrado fichero .txt"); //Se ha encontrado un dato de canción
+              fs.readFile(
+                songsFolder + "/" + song + "/" + file,
+                "utf-8",
+                (err, data) => {
+                  if (err) {
+                    alert("An error ocurred reading the file :" + err.message);
+                    return;
+                  }
+                  // Change how to handle the file content
+                  var result = data.split("#");
+                  console.log("The file content is : " + result);
+                }
+              );
+
               //alert("Se ha encontrado un fitchero txt en la canción " + song);
               //Añadir a base de datos de mongoDB o SQL lite
 
