@@ -32,6 +32,7 @@ const newWin = () => {
 	win = new electron.BrowserWindow({
 		icon: path.join(__dirname, 'static/icon.ico'),
 		fullscreen: true,
+		webPreferences: { webSecurity: false },
 		frame: false,
 		menu: false
 	})

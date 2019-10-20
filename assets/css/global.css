@@ -1,4 +1,11 @@
 /* @import './color.css'; */
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+	cursor: default;
+}
 body {
 	margin: 0px;
 	padding: 0px;
@@ -12,7 +19,6 @@ body {
 	background-attachment: fixed;
 	color: white;
 	font-family: "Open Sans", sans-serif;
-	user-select: none;
   }
   .grid-box {
 	display: flex;
@@ -20,16 +26,18 @@ body {
   hr {
 	opacity: 0.6;
   }
-  
+  .menu-top .selectable-box{
+	  height: 300px;
+  }
   .selectable-box {
-	font-size: 36px;
 	font-weight: 300;
 	width: 100%;
-	margin: 2.5px;
-	padding: 20px;
+	height: 75px;
+	margin: 5px;
 	background: white;
 	transition: 0.3s ease;
 	color: black;
+	overflow: hidden;
   }
   
   .selectable-box:hover {
@@ -37,17 +45,39 @@ body {
 	background: rgb(0, 153, 125);
 	color: white;
   }
+  .selectable-box video{
+	  position: relative;
+	  width: calc(100%);
+	  left: 0px;
+  }
+  .selectable-box h1{
+	font-size: 36px;
+	margin-top: 15px;
+	transition: 0.3s ease;
+  }
+  .selectable-box:hover h1{
+	font-size: 36px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+  }
+  .selectable-box p{
+	transition: 0.3s ease;
+  }
+  .selectable-box:hover p{
+	margin-top: 0px;
+  }
   
-  h1 {
+  h1.logo {
 	font-family: Red Hat Display;
 	font-weight: 700;
 	font-size: 72px;
   }
   
-  h1 span {
+  h1.logo span {
 	font-size: 20px;
 	vertical-align: top;
-	margin-top: 10px;
+	margin-top: 28px;
+	margin-left: -10px;
 	display: inline-block;
   }
   
@@ -75,7 +105,7 @@ body {
 	height: 10px;
 	filter: drop-shadow(10px 1px 10px black);
   }
-   body {cursor: url(http://ani.cursors-4u.net/toons/too-12/too1117.ani), url(http://ani.cursors-4u.net/toons/too-12/too1117.png), auto !important;}
+   /* body {cursor: url(http://ani.cursors-4u.net/toons/too-12/too1117.ani), url(http://ani.cursors-4u.net/toons/too-12/too1117.png), auto !important;} */
    .center-middle{
 	   width: 100%;
 	   position: relative;

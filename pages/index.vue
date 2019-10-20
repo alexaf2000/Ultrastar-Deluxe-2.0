@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"
       rel="stylesheet"
     />
-    <h1 class="center-middle">
+    <h1 class="logo center-middle">
       ultrastar
       <span>™</span>
     </h1>
@@ -70,9 +70,9 @@ export default {
         });
       });
     });
-    setTimeout(function() {
-      vm.$router.replace({ path: "/dashboard/" });
-    }, 15000);
+    // setTimeout(function() {
+       vm.$router.replace({ path: "/dashboard/" });
+    // }, 15000);
   }
 };
 </script>
