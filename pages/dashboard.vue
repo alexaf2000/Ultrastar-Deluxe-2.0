@@ -22,7 +22,8 @@
           <p>Salir del juego.</p>
         </div>
         <nuxt-link tag="div" to="/songs/" class="selectable-box">
-          <video autoplay :src="src"></video>
+          <video autoplay :src="videosrc"></video>
+          <audio autoplay :src="musicsrc"></audio>
           <h1>Jugar a ultrastar</h1>
           <p>Canta tus canciones favoritas</p>
         </nuxt-link>
@@ -54,7 +55,8 @@
 export default {
   data() {
     return {
-      src: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Panic!%20At%20The%20Disco%20-%20High%20Hopes/Panic!%20At%20The%20Disco%20-%20High%20Hopes.mp4#t=60`
+      videosrc: `file:///C:/Users/alex_/Documents/Proyectos/Nuxtron/Ultrastar-Deluxe-2.0/songs/Imagine%20Dragons%20-%20It's%20Time/Imagine%20Dragons%20-%20It's%20Time.mp4#t=60`,
+      musicsrc: `file:///C:/Users/alex_/Documents/Proyectos/Nuxtron/Ultrastar-Deluxe-2.0/songs/Imagine%20Dragons%20-%20It's%20Time/Imagine%20Dragons%20-%20It's%20Time.mp3#t=60`
     };
   },
   methods: {
