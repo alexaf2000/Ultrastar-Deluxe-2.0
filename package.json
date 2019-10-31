@@ -1,33 +1,33 @@
 {
-  "name": "ultrastar",
-  "version": "1.0.0",
-  "description": "Nuxt + Electron",
-  "author": "Alex AF",
-  "private": true,
-  "main": "main.js",
-  "build": {
-    "appId": "com.ultrastar.ultrastar",
-    "directories": {
-      "buildResources": "static"
+    "name": "ultrastar",
+    "version": "1.0.0",
+    "description": "Nuxt + Electron",
+    "author": "Alex AF",
+    "private": true,
+    "main": "main.js",
+    "build": {
+        "appId": "com.ultrastar.ultrastar",
+        "directories": {
+            "buildResources": "static"
+        }
+    },
+    "scripts": {
+        "dev": "cross-env NODE_ENV=DEV electron .",
+        "build": "nuxt build && electron-builder"
+    },
+    "dependencies": {
+        "ini": "^1.3.5",
+        "nuxt": "^2.10.2"
+    },
+    "devDependencies": {
+        "babel-eslint": "^8.2.1",
+        "cross-env": "^6.0.3",
+        "electron-devtools-installer": "^2.2.4",
+        "electron": "^7.0.0",
+        "electron-builder": "^21.2.0",
+        "eslint": "^4.15.0",
+        "eslint-friendly-formatter": "^3.0.0",
+        "eslint-loader": "^1.7.1",
+        "eslint-plugin-vue": "^4.0.0"
     }
-  },
-  "scripts": {
-    "dev": "cross-env NODE_ENV=DEV electron .",
-    "build": "nuxt build && electron-builder"
-  },
-  "dependencies": {
-    "ini": "^1.3.5",
-    "nuxt": "^2.10.1"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "cross-env": "^5.2.1",
-    "electron": "2.0.0-beta.7",
-    "electron-builder": "^20.8.1",
-    "electron-devtools-installer": "^2.2.3",
-    "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0"
-  }
 }
