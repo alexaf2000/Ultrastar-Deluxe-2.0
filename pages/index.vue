@@ -77,7 +77,6 @@ export default {
                       }
                     }
                   }
-                   console.warn(Song);
 
                   // console.log("The file content is : " + result);
                 }
