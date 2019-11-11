@@ -59,7 +59,6 @@ export default {
                       switch (lineConfiguration[0]) {
                         case "#TITLE":
                           console.log("Titulo: " + lineConfiguration[1]);
-                          Song.title = lineConfiguration[1];
                           break;
                         case "#ARTIST":
                           console.log("Artista: " + lineConfiguration[1]);
