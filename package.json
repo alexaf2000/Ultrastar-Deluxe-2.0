@@ -1,5 +1,6 @@
 {
     "name": "ultrastar",
+    "productName": "UltraStar",
     "version": "1.0.0",
     "description": "Nuxt + Electron",
     "author": "Alex AF",
