@@ -10,7 +10,11 @@
         "appId": "com.ultrastar.ultrastar",
         "directories": {
             "buildResources": "static"
-        }
+        },
+        "extraFiles": [
+            "./songs",
+            "./config.ini"
+        ]
     },
     "scripts": {
         "dev": "cross-env NODE_ENV=DEV electron .",
