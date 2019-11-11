@@ -16,11 +16,18 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      test: "tst"
+    };
+  },
   mounted() {
+    console.log(this.test);
+    console.log(this.$store.state.songs.songsList);
     var vm = this;
     const fs = require("fs");
     var path = require("path");
-    const ini = require('ini');
+    const ini = require("ini");
     const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
     const songsFolder = config.songs_path;
     fs.readdir(songsFolder, (err, songs) => {
@@ -44,8 +51,36 @@ export default {
                     return;
                   }
                   // Change how to handle the file content
-                  var result = data.split("#");
-                  console.log("The file content is : " + result);
+                  var songLines = data.split("\n");
+                 
+                  for (let i = 0; i < songLines.length; i++) {
+                    if (songLines[i][0] == "#") {
+                      let lineConfiguration = songLines[i].split(":");
+                      switch (lineConfiguration[0]) {
+                        case "#TITLE":
+                          console.log("Titulo: " + lineConfiguration[1]);
+                          Song.title = lineConfiguration[1];
+                          break;
+                        case "#ARTIST":
+                          console.log("Artista: " + lineConfiguration[1]);
+                          break;
+                        case "#LANGUAGE":
+                          console.log("Idioma: " + lineConfiguration[1]);
+                          break;
+                        case "#YEAR":
+                          console.log("Año: " + lineConfiguration[1]);
+                          break;
+                        case "#COVER":
+                          console.log(
+                            "Imagen de portada: " + lineConfiguration[1]
+                          );
+                          break;
+                      }
+                    }
+                  }
+                   console.warn(Song);
+
+                  // console.log("The file content is : " + result);
                 }
               );
 
@@ -69,9 +104,10 @@ export default {
           });
         });
       });
+      vm.$router.replace({ path: "/dashboard/" });
     });
     // setTimeout(function() {
-       vm.$router.replace({ path: "/dashboard/" });
+    //  vm.$router.replace({ path: "/dashboard/" });
     // }, 15000);
   }
 };
