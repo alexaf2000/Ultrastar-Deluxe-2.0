@@ -17,10 +17,10 @@
       <h3>Bienvenido Jugador 1</h3>
       <hr />
       <div class="grid-box menu-top">
-        <div class="selectable-box">
-          <h1>Mi perfil</h1>
-          <p>Salir del juego.</p>
-        </div>
+        <nuxt-link tag="div" to="/song/Imagine Dragons - It's Time" class="selectable-box">
+          <h1>Title</h1>
+          <p>Subtitle</p>
+        </nuxt-link>
         <nuxt-link tag="div" to="/songs/" class="selectable-box">
           <video autoplay :src="videosrc"></video>
           <audio autoplay :src="musicsrc"></audio>
