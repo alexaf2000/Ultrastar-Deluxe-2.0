@@ -1,7 +1,7 @@
 <template>
   <div class="play-interf">
-    <h1>{{this.$route.params.title}}</h1>
-    <video id="music_video" autoplay :src="videosrc"></video>
+    <h1>{{this.songID}}</h1>
+    <video muted id="music_video" autoplay :src="videosrc"></video>
     <audio id="music_audio" autoplay :src="musicsrc"></audio>
     <div class="lyrics_display">
       <h1 class="firstLine">
@@ -12,6 +12,7 @@
     <transition name="slide-fade">
     <div class="pause_menu" v-if="paused">
       <h1 style="margin: 0 auto;text-align: center;margin-top: 45vh;">Pausado</h1>
+      <nuxt-link to="/dashboard">Volver a inicio</nuxt-link>
     </div>
     </transition>
   </div>
@@ -21,6 +22,8 @@
 export default {
   data() {
     return {
+      songID:this.$route.params.id,
+      song:null,
       paused: false,
       videosrc: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Charlie%20Puth%20-%20Attention/Charlie%20Puth%20-%20Attention.mp4`,
       musicsrc: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Charlie%20Puth%20-%20Attention/Charlie%20Puth%20-%20Attention.mp3`,
@@ -31,6 +34,27 @@ export default {
     test: null
   },
   mounted() {
+        const fs = require("fs");
+    var path = require("path");
+    const ini = require("ini");
+    const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
+    const songsFolder = config.songs_path;
+    this.song = this.$store.state.songs.songsList[this.songID];
+this.videosrc =
+        songsFolder +
+        "/" +
+        encodeURI(this.song.folder) +
+        "/" +
+        encodeURI(this.song.video);
+      this.musicsrc =
+        songsFolder +
+        "/" +
+        encodeURI(this.song.folder) +
+        "/" +
+        encodeURI(this.song.audio);
+
+
+
     let ruta = encodeURI(this.$route.params.title);
     console.log(ruta);
     let vm = this;
