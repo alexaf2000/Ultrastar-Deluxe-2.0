@@ -15,11 +15,18 @@
   </div>
 </template>
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   data() {
     return {
       test: "tst"
     };
+  },
+  methods: {
+    addSong: function(object){
+      this.$store.commit('songs/addSong', object);
+    }
   },
   mounted() {
     console.log(this.test);
@@ -34,17 +41,17 @@ export default {
       //Leer el directorio songsFolder
       songs.forEach(song => {
         //Por cada canción (carpeta)
-        console.log(song); //Imprime el titulo de la carpeta
+        //console.log(song); //Imprime el titulo de la carpeta
         fs.readdir(songsFolder + "/" + song, (err, files) => {
           //Lee los archivos dentro de esa canción
           files.forEach(file => {
             //Por cada archivo dentro de la carpeta de la canción
             if (path.extname(file) == ".txt") {
               //Si la extensión del archivo es .txt
-              console.log("Se ha encontrado fichero .txt"); //Se ha encontrado un dato de canción
+              //console.log("Se ha encontrado fichero .txt"); //Se ha encontrado un dato de canción
               fs.readFile(
                 songsFolder + "/" + song + "/" + file,
-                "utf-8",
+                "latin1",
                 (err, data) => {
                   if (err) {
                     alert("An error ocurred reading the file :" + err.message);
@@ -52,32 +59,49 @@ export default {
                   }
                   // Change how to handle the file content
                   var songLines = data.split("\n");
-                 
+                  console.log("Leyendo fichero .txt");
                   for (let i = 0; i < songLines.length; i++) {
                     if (songLines[i][0] == "#") {
                       let lineConfiguration = songLines[i].split(":");
                       switch (lineConfiguration[0]) {
                         case "#TITLE":
-                          console.log("Titulo: " + lineConfiguration[1]);
+                          var title = lineConfiguration[1];
                           break;
                         case "#ARTIST":
-                          console.log("Artista: " + lineConfiguration[1]);
+                          var artist = lineConfiguration[1];
                           break;
                         case "#LANGUAGE":
-                          console.log("Idioma: " + lineConfiguration[1]);
+                          var lang = lineConfiguration[1];
+                          break;
+                          case "#EDITION":
+                          var edition = lineConfiguration[1];
                           break;
                         case "#YEAR":
-                          console.log("Año: " + lineConfiguration[1]);
+                          var year = lineConfiguration[1];
+                          break;
+                          case "#MP3":
+                          var audio = lineConfiguration[1];
+                          break;
+                          case "#VIDEO":
+                          var video = lineConfiguration[1];
                           break;
                         case "#COVER":
-                          console.log(
-                            "Imagen de portada: " + lineConfiguration[1]
-                          );
+                          var cover = lineConfiguration[1];
                           break;
                       }
                     }
                   }
-
+                  var folder = song;
+                  this.addSong({
+                    title: title,
+                    artist: artist,
+                    year: year,
+                    edition: edition,
+                    cover: cover,
+                    audio: audio,
+                    folder: folder,
+                    video: video
+                  });
                   // console.log("The file content is : " + result);
                 }
               );
