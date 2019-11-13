@@ -60,18 +60,17 @@ export default {
     };
   },
   mounted() {
+    const vm = this;
     const fs = require("fs");
     var path = require("path");
     const ini = require("ini");
     const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
     const songsFolder = config.songs_path;
-    console.log(this.$store.state.songs.songsList);
-    let indice = Math.floor(
-      Math.random() * this.$store.state.songs.songsList.length
-    );
-    let cancion = this.$store.state.songs.songsList[indice];
-    this.videosrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.video)+"#t=60";
-    this.musicsrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.audio)+"#t=60";
+    this.randomMusicSample(songsFolder);
+    console.log(this.$store.state.songs.songsList[2427]);
+    window.setInterval(function() {
+      vm.randomMusicSample(songsFolder);
+    }, 15000);
   },
   methods: {
     closeProgram: function() {
@@ -81,6 +80,26 @@ export default {
         let win = remote.getCurrentWindow();
         win.close();
       }
+    },
+    randomMusicSample: function(songsFolder) {
+      let indice = Math.floor(
+        Math.random() * this.$store.state.songs.songsList.length
+      );
+      let cancion = this.$store.state.songs.songsList[indice];
+      this.videosrc =
+        songsFolder +
+        "/" +
+        encodeURI(cancion.folder) +
+        "/" +
+        encodeURI(cancion.video) +
+        "#t=60";
+      this.musicsrc =
+        songsFolder +
+        "/" +
+        encodeURI(cancion.folder) +
+        "/" +
+        encodeURI(cancion.audio) +
+        "#t=60";
     }
   }
 };
