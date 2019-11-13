@@ -22,7 +22,7 @@
           <p>Subtitle</p>
         </nuxt-link>
         <nuxt-link tag="div" to="/songs/" class="selectable-box">
-          <video autoplay :src="videosrc"></video>
+          <video muted autoplay :src="videosrc"></video>
           <audio autoplay :src="musicsrc"></audio>
           <h1>Jugar a ultrastar</h1>
           <p>Canta tus canciones favoritas</p>
@@ -70,9 +70,8 @@ export default {
       Math.random() * this.$store.state.songs.songsList.length
     );
     let cancion = this.$store.state.songs.songsList[indice];
-    alert(encodeURI(cancion.video));
-    this.videosrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.video);
-    this.musicsrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.audio);
+    this.videosrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.video)+"#t=60";
+    this.musicsrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.audio)+"#t=60";
   },
   methods: {
     closeProgram: function() {
