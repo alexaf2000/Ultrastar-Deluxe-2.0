@@ -13,7 +13,8 @@
         },
         "extraFiles": [
             "./songs",
-            "./config.ini"
+            "./config.ini",
+            "./themes"
         ]
     },
     "scripts": {

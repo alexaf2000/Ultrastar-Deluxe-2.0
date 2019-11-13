@@ -1,116 +1,137 @@
 /* @import './color.css'; */
+
 :not(input):not(textarea),
 :not(input):not(textarea)::after,
 :not(input):not(textarea)::before {
     -webkit-user-select: none;
     user-select: none;
-	cursor: default;
+    cursor: default;
 }
+
+* {
+    cursor: url('../themes/default/[interface]cursor.png'), auto !important;
+}
+
+*:active:hover {
+    cursor: url('../themes/default/[interface]cursor_pressed.png'), auto !important;
+}
+
 body {
-	margin: 0px;
-	padding: 0px;
-	background: #7f00ff;
-	/* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #5211c9, #890ce6);
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #5211c9, #890ce6);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	background-size: cover;
-	background-attachment: fixed;
-	color: white;
-	font-family: "Open Sans", sans-serif;
-  }
-  .grid-box {
-	display: flex;
-  }
-  hr {
-	opacity: 0.6;
-  }
-  .menu-top .selectable-box{
-	  height: 300px;
-  }
-  .selectable-box {
-	font-weight: 300;
-	width: 100%;
-	height: 75px;
-	margin: 5px;
-	background: white;
-	transition: 0.3s ease;
-	color: black;
-	overflow: hidden;
-  }
-  
-  .selectable-box:hover {
-	transform: scale(1.01);
-	background: rgb(0, 153, 125);
-	color: white;
-  }
-  .selectable-box video{
-	  position: relative;
-	  width: calc(100%);
-	  left: 0px;
-  }
-  .selectable-box h1{
-	font-size: 36px;
-	margin-top: 15px;
-	transition: 0.3s ease;
-  }
-  .selectable-box:hover h1{
-	font-size: 36px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-  }
-  .selectable-box p{
-	transition: 0.3s ease;
-  }
-  .selectable-box:hover p{
-	margin-top: 0px;
-  }
-  
-  h1.logo {
-	font-family: Red Hat Display;
-	font-weight: 700;
-	font-size: 72px;
-  }
-  
-  h1.logo span {
-	font-size: 20px;
-	vertical-align: top;
-	margin-top: 28px;
-	margin-left: -10px;
-	display: inline-block;
-  }
-  
-  footer {
-	width: 100%;
-	height: 120px;
-	position: absolute;
-	bottom: 0px;
-	background: #222;
-  }
-  
-  div.playable-zone {
-	padding: 0px 215px;
-  }
-  
-  footer::after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	top: -10px;
-	background-image: linear-gradient(319deg, #222 16px, transparent 17px),
-	  linear-gradient(39deg, #222 16px, transparent 17px);
-	background-size: 20px 23px;
-	background-repeat: repeat-x;
-	height: 10px;
-	filter: drop-shadow(10px 1px 10px black);
-  }
-   /* body {cursor: url(http://ani.cursors-4u.net/toons/too-12/too1117.ani), url(http://ani.cursors-4u.net/toons/too-12/too1117.png), auto !important;} */
-   .center-middle{
-	   width: 100%;
-	   position: relative;
-	   margin: 0 auto;
-	   text-align: center;
-	   margin-top: 45vh;
-	   vertical-align: middle;
-   }
+    margin: 0px;
+    padding: 0px;
+    background: #7f00ff;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5211c9, #890ce6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5211c9, #890ce6);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+}
+
+.grid-box {
+    display: flex;
+}
+
+hr {
+    opacity: 0.6;
+}
+
+.menu-top .selectable-box {
+    height: 300px;
+}
+
+.selectable-box {
+    font-weight: 300;
+    width: 100%;
+    height: 75px;
+    margin: 5px;
+    background: white;
+    transition: 0.3s ease;
+    color: black;
+    overflow: hidden;
+}
+
+.selectable-box:hover {
+    transform: scale(1.01);
+    background: rgb(0, 153, 125);
+    color: white;
+}
+
+.selectable-box video {
+    position: relative;
+    width: calc(100%);
+    left: 0px;
+}
+
+.selectable-box h1 {
+    font-size: 36px;
+    margin-top: 15px;
+    transition: 0.3s ease;
+}
+
+.selectable-box:hover h1 {
+    font-size: 36px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.selectable-box p {
+    transition: 0.3s ease;
+}
+
+.selectable-box:hover p {
+    margin-top: 0px;
+}
+
+h1.logo {
+    font-family: Red Hat Display;
+    font-weight: 700;
+    font-size: 72px;
+}
+
+h1.logo span {
+    font-size: 20px;
+    vertical-align: top;
+    margin-top: 28px;
+    margin-left: -10px;
+    display: inline-block;
+}
+
+footer {
+    width: 100%;
+    height: 120px;
+    position: absolute;
+    bottom: 0px;
+    background: #222;
+}
+
+div.playable-zone {
+    padding: 0px 215px;
+}
+
+footer::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: -10px;
+    background-image: linear-gradient(319deg, #222 16px, transparent 17px), linear-gradient(39deg, #222 16px, transparent 17px);
+    background-size: 20px 23px;
+    background-repeat: repeat-x;
+    height: 10px;
+    filter: drop-shadow(10px 1px 10px black);
+}
+
+
+/* body {cursor: url(http://ani.cursors-4u.net/toons/too-12/too1117.ani), url(http://ani.cursors-4u.net/toons/too-12/too1117.png), auto !important;} */
+
+.center-middle {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 45vh;
+    vertical-align: middle;
+}
