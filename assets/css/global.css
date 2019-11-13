@@ -9,11 +9,11 @@
 }
 
 * {
-    cursor: url('../themes/default/[interface]cursor.png'), auto !important;
+    cursor: url('../../themes/default/[interface]cursor.png'), auto !important;
 }
 
 *:active:hover {
-    cursor: url('../themes/default/[interface]cursor_pressed.png'), auto !important;
+    cursor: url('../../themes/default/[interface]cursor_pressed.png'), auto !important;
 }
 
 body {
