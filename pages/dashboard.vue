@@ -59,6 +59,21 @@ export default {
       musicsrc: `file:///C:/Users/alex_/Documents/Proyectos/Nuxtron/Ultrastar-Deluxe-2.0/songs/Imagine%20Dragons%20-%20It's%20Time/Imagine%20Dragons%20-%20It's%20Time.mp3#t=60`
     };
   },
+  mounted() {
+    const fs = require("fs");
+    var path = require("path");
+    const ini = require("ini");
+    const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
+    const songsFolder = config.songs_path;
+    console.log(this.$store.state.songs.songsList);
+    let indice = Math.floor(
+      Math.random() * this.$store.state.songs.songsList.length
+    );
+    let cancion = this.$store.state.songs.songsList[indice];
+    alert(encodeURI(cancion.video));
+    this.videosrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.video);
+    this.musicsrc = songsFolder+"/"+encodeURI(cancion.folder)+"/"+encodeURI(cancion.audio);
+  },
   methods: {
     closeProgram: function() {
       var opcion = confirm("Estas seguro de que deseas salir de Ultrastar?");
