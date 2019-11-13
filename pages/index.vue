@@ -63,6 +63,7 @@ export default {
                   for (let i = 0; i < songLines.length; i++) {
                     if (songLines[i][0] == "#") {
                       let lineConfiguration = songLines[i].split(":");
+                      lineConfiguration[1] = lineConfiguration[1].trim();
                       switch (lineConfiguration[0]) {
                         case "#TITLE":
                           var title = lineConfiguration[1];
