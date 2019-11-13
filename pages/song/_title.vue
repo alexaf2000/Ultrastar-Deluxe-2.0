@@ -9,9 +9,11 @@
       </h1>
       <h1 class="secondLine">I get a little bit bigger, but then</h1>
     </div>
+    <transition name="slide-fade">
     <div class="pause_menu" v-if="paused">
       <h1 style="margin: 0 auto;text-align: center;margin-top: 45vh;">Pausado</h1>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -20,8 +22,8 @@ export default {
   data() {
     return {
       paused: false,
-      videosrc: `file:///C:/Users/alex_/Documents/Proyectos/Nuxtron/Ultrastar-Deluxe-2.0/songs/Imagine%20Dragons%20-%20It's%20Time/Imagine%20Dragons%20-%20It's%20Time.mp4`,
-      musicsrc: `file:///C:/Users/alex_/Documents/Proyectos/Nuxtron/Ultrastar-Deluxe-2.0/songs/Imagine%20Dragons%20-%20It's%20Time/Imagine%20Dragons%20-%20It's%20Time.mp3`,
+      videosrc: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Charlie%20Puth%20-%20Attention/Charlie%20Puth%20-%20Attention.mp4`,
+      musicsrc: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Charlie%20Puth%20-%20Attention/Charlie%20Puth%20-%20Attention.mp3`,
       GAP: 18282
     };
   },
@@ -51,6 +53,17 @@ export default {
 </script>
 
 <style>
+.slide-fade-enter-active {
+  transition: all .3s ease-in;
+}
+.slide-fade-leave-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+
+  opacity: 0;
+}
 .play-interf {
   position: fixed;
   background: black;
@@ -78,9 +91,14 @@ video {
   left: 0px;
   width: 100%;
   height: 150px;
-  background: rgba(99, 99, 99, 0.43);
-  border-radius: 10px 10px 0px 0px;
+  background: rgba(0, 0, 0, 0.43);
   text-align: center;
+}
+.play-interf, .play-interf *{ 
+  cursor: none!important;
+}
+.play-interf, .play-interf *:active:hover {
+	cursor: none !important;
 }
 .pause_menu {
   position: fixed;
@@ -96,10 +114,10 @@ video {
     #a9009caf
   );
   background-size: 800% 800%;
-
-  -webkit-animation: AnimationName 18s ease infinite;
-  -moz-animation: AnimationName 18s ease infinite;
-  animation: AnimationName 18s ease infinite;
+  
+  -webkit-animation: AnimationName 10s ease infinite;
+  -moz-animation: AnimationName 10s ease infinite;
+  animation: AnimationName 10s ease infinite;
 }
 @-webkit-keyframes AnimationName {
   0% {
