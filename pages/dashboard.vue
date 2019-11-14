@@ -87,13 +87,14 @@ export default {
       );
       let cancion = this.$store.state.songs.songsList[indice];
       this.videosrc =
+      "file:///" +
         songsFolder +
         "/" +
         encodeURI(cancion.folder) +
         "/" +
         encodeURI(cancion.video) +
         "#t=60";
-      this.musicsrc =
+      this.musicsrc = "file:///"+
         songsFolder +
         "/" +
         encodeURI(cancion.folder) +
