@@ -19,14 +19,18 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #7f00ff;
-    /* fallback for old browsers */
+    /* background: #7f00ff;
     background: -webkit-linear-gradient(to right, #5211c9, #890ce6);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #5211c9, #890ce6);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
+    background-attachment: fixed; 
+    */
+    background: linear-gradient( 108deg, #084387af, #1600d2af, #7f00ff);
+    background-size: 800% 800%;
     background-attachment: fixed;
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
     color: white;
     font-family: "Open Sans", sans-serif;
 }
