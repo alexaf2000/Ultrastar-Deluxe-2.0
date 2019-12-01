@@ -1,6 +1,6 @@
 <template>
   <div class="play-interf">
-    <h1>{{this.songID}}</h1>
+    <p>{{this.songID}}</p>
     <video muted id="music_video" autoplay :src="videosrc"></video>
     <audio id="music_audio" autoplay :src="musicsrc"></audio>
     <div class="lyrics_display">
@@ -39,7 +39,13 @@ export default {
     const ini = require("ini");
     const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
     const songsFolder = config.songs_path;
+    var aud = document.getElementById("music_audio");
+    var vid = document.getElementById("music_video");
+    aud.onended = function() {
+      vm.$router.replace({ path: "/songs/" });
+    };
     this.song = this.$store.state.songs.songsList[this.songID];
+    let vm = this;
     this.videosrc =
       "file:///" +
       songsFolder +
@@ -56,13 +62,9 @@ export default {
       encodeURI(this.song.audio);
 
     let ruta = encodeURI(this.$route.params.title);
-    console.log(ruta);
-    let vm = this;
     window.addEventListener("keydown", function(k) {
       if (k.keyCode == 27 || k.keyCode == 13 || k.keyCode == 32) {
         vm.paused = !vm.paused;
-        var vid = document.getElementById("music_video");
-        var aud = document.getElementById("music_audio");
         if (vm.paused) {
           vid.pause();
           aud.pause();
