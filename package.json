@@ -26,14 +26,9 @@
         "nuxt": "^2.10.2"
     },
     "devDependencies": {
-        "babel-eslint": "^8.2.1",
         "cross-env": "^6.0.3",
-        "electron-devtools-installer": "^2.2.4",
-        "electron": "^7.0.0",
+        "electron": "^7.1.5",
         "electron-builder": "^21.2.0",
-        "eslint": "^4.15.0",
-        "eslint-friendly-formatter": "^3.0.0",
-        "eslint-loader": "^1.7.1",
-        "eslint-plugin-vue": "^4.0.0"
+        "electron-devtools-installer": "^2.2.4"
     }
 }
