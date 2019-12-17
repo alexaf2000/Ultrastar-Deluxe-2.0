@@ -1,6 +1,7 @@
 export const state = () => ({
     songsList: [],
     song: {
+        songID: null,
         title: null,
         artist: null,
         year: null,
@@ -14,6 +15,7 @@ export const state = () => ({
 
 export const mutations = {
     addSong: (state, song) => {
+        state.song.songID = song.songID;
         state.song.title = song.title;
         state.song.artist = song.artist;
         state.song.year = song.year;

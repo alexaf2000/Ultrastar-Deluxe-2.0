@@ -45,6 +45,11 @@ export default {
       vm.$router.replace({ path: "/songs/" });
     };
     this.song = this.$store.state.songs.songsList[this.songID];
+    this.$store.state.songs.songsList[
+      this.$store.state.songs.songsList.findIndex(
+        song => song.songID == this.songID
+      )
+    ];
     let vm = this;
     this.videosrc =
       "file:///" +
