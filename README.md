@@ -17,6 +17,9 @@ This project is based on the last SingStar version:
 | ------------- |:-------------:|
 | <img src="https://i.imgur.com/KqgCncQ.jpg" />     | <img src="https://i.imgur.com/ppm54mn.jpg"  /> |
 
+### Example of actual state (17th December 2019):
+[![Everything Is AWESOME](https://img.youtube.com/vi/7F2RwrDpSO4/0.jpg)](https://www.youtube.com/watch?v=7F2RwrDpSO4 "See demo.")
+
 ## How to use it
 
 ``` bash
