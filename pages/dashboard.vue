@@ -23,7 +23,7 @@
         </nuxt-link>
         <nuxt-link tag="div" to="/songs/" class="selectable-box">
           <video muted autoplay :src="videosrc"></video>
-          <audio autoplay :src="musicsrc"></audio>
+          <audio id="audio" autoplay :src="musicsrc"></audio>
           <h1>Jugar a ultrastar</h1>
           <p>Canta tus canciones favoritas</p>
         </nuxt-link>
@@ -66,10 +66,19 @@ export default {
     const ini = require("ini");
     const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
     const songsFolder = config.songs_path;
+    let audio = $("#audio");
     this.randomMusicSample(songsFolder);
-    console.log(this.$store.state.songs.songsList[2427]);
+    audio.animate({ volume: 0 }, 0);
+    audio.animate({ volume: 1 }, 800);
+    setTimeout(function() {
+      audio.animate({ volume: 0 }, 800);
+    }, 14000);
     window.setInterval(function() {
+      audio.animate({ volume: 1 }, 800);
       vm.randomMusicSample(songsFolder);
+      setTimeout(function() {
+        audio.animate({ volume: 0 }, 800);
+      }, 14000);
     }, 15000);
   },
   methods: {
@@ -87,14 +96,15 @@ export default {
       );
       let cancion = this.$store.state.songs.songsList[indice];
       this.videosrc =
-      "file:///" +
+        "file:///" +
         songsFolder +
         "/" +
         encodeURI(cancion.folder) +
         "/" +
         encodeURI(cancion.video) +
         "#t=60";
-      this.musicsrc = "file:///"+
+      this.musicsrc =
+        "file:///" +
         songsFolder +
         "/" +
         encodeURI(cancion.folder) +
