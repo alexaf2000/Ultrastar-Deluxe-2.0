@@ -1,10 +1,13 @@
 <template>
   <div class="songs-list">
-    <nuxt-link v-for="(value, key) in computedSongsList" :to="{name: 'song-id', params:{ id:value.songID }}">
+    <a class="nav-button left" @click="slide('prev')">Atras</a>
+    <nuxt-link
+      v-for="(value, key) in computedSongsList"
+      :to="{name: 'song-id', params:{ id:value.songID }}"
+    >
       <div class="song">
         <img :src="'file:///'+songsFolder+'/'+encodeURI(value.folder)+'/'+ encodeURI(value.cover)" />
         <div style="padding: 0px 15px;">
-          <h2>{{key}}</h2>
           <h1>{{value.title}}</h1>
           <h2 style="color: #747474;font-weight: 400;">{{value.artist}}</h2>
 
@@ -12,8 +15,7 @@
         </div>
       </div>
     </nuxt-link>
-    <button @click="slide('prev')">Previous</button>
-    <button @click="slide('next')">Next</button>
+    <a class="nav-button right" @click="slide('next')">Siguiente</a>
   </div>
 </template>
 
@@ -63,9 +65,11 @@ export default {
   margin-top: 5%;
   background: #000000;
   width: max-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 .song {
-  width: 400px;
+  width: 350px;
   background: white;
   height: 540px;
   color: black;
@@ -85,9 +89,28 @@ export default {
   color: white !important;
 }
 .song img {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   margin: 0 auto;
   display: block;
+}
+.nav-button {
+  position: fixed;
+  width: 80px;
+  height: 120px;
+  background: #e0e0e04d;
+  padding: 15px;
+  border: 2px solid white;
+  transition: 0.3s ease;
+}
+.nav-button:hover {
+  background: white;
+  color: black;
+}
+.nav-button.left {
+  left: 20px;
+}
+.nav-button.right {
+  right: 20px;
 }
 </style>
