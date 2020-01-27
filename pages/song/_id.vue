@@ -25,8 +25,8 @@ export default {
       songID: this.$route.params.id,
       song: null,
       paused: false,
-      videosrc: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Charlie%20Puth%20-%20Attention/Charlie%20Puth%20-%20Attention.mp4`,
-      musicsrc: `file:///C:/Users/alex_/Documents/projects/Ultrastar/songs/Charlie%20Puth%20-%20Attention/Charlie%20Puth%20-%20Attention.mp3`,
+      videosrc: ``,
+      musicsrc: ``,
       GAP: 18282
     };
   },
@@ -35,12 +35,12 @@ export default {
   },
   mounted() {
     const fs = require("fs");
-    var path = require("path");
+    let path = require("path");
     const ini = require("ini");
     const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
     const songsFolder = config.songs_path;
-    var aud = document.getElementById("music_audio");
-    var vid = document.getElementById("music_video");
+    let aud = document.getElementById("music_audio");
+    let vid = document.getElementById("music_video");
     aud.onended = function() {
       vm.$router.replace({ path: "/songs/" });
     };
@@ -65,11 +65,16 @@ export default {
       encodeURI(this.song.folder) +
       "/" +
       encodeURI(this.song.audio);
-
     let ruta = encodeURI(this.$route.params.title);
-    window.addEventListener("keydown", function(k) {
+    window.addEventListener("keydown", this.pauseSong);
+  },
+  methods: {
+    pauseSong: function(k) {
+      let vm = this;
       if (k.keyCode == 27 || k.keyCode == 13 || k.keyCode == 32) {
         vm.paused = !vm.paused;
+        let aud = document.getElementById("music_audio");
+        let vid = document.getElementById("music_video");
         if (vm.paused) {
           vid.pause();
           aud.pause();
@@ -78,7 +83,10 @@ export default {
           aud.play();
         }
       }
-    });
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener("keydown", this.pauseSong);
   }
 };
 </script>
